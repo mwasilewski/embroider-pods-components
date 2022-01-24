@@ -1,0 +1,14 @@
+diff --git a/node_modules/@embroider/core/src/app-files.js b/node_modules/@embroider/core/src/app-files.js
+index f5c23c4..d542ec5 100644
+--- a/node_modules/@embroider/core/src/app-files.js
++++ b/node_modules/@embroider/core/src/app-files.js
+@@ -26,7 +26,8 @@ class AppFiles {
+                 }
+                 continue;
+             }
+-            if (relativePath.startsWith('components/')) {
++            let podsPath = podModulePrefix ? podModulePrefix.split('/').slice(1).join('/') : '';
++            if (relativePath.startsWith('components/') || relativePath.startsWith(podsPath + '/components/')) {
+                 // hbs files are resolvable, but not when they're used via co-location.
+                 // An hbs file is used via colocation when it's inside the components
+                 // directory, and also not named "template.hbs" (because that is an
